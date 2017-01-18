@@ -1,5 +1,5 @@
-# XFLParser
-Parser for Adobe Flash / Animate .xfl projects (xml / dat for bitmaps, sounds, video / etc).
+# XFLProcessor
+Processor for Adobe Flash / Animate .xfl projects (xml / dat for bitmaps, sounds, video / etc).
 
 # Main goals:
 
