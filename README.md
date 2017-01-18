@@ -3,9 +3,7 @@ Parser for Adobe Flash / Animate .xfl projects (xml / dat for bitmaps, sounds, v
 
 # Main goals:
 
-**1. Be able to restore initial resource files from .dat files.**
-
-File formats planned to be investigated.
+### **1. Be able to restore initial resource files from .dat files.**
 
 **Graphic file formats**
 
@@ -25,6 +23,7 @@ Wave|WAV|**No**
 MP3|MP3|**No**
 
 **Video file formats**
+
 Not defined yet.
 
-**2. Construct some unified framework for rendering data outside the SWF files.**
+### **2. Construct some unified framework for rendering data outside the SWF files.**
