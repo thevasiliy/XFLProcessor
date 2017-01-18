@@ -8,6 +8,7 @@ Parser for Adobe Flash / Animate .xfl projects (xml / dat for bitmaps, sounds, v
 File formats planned to be investigated.
 
 **Graphic file formats**
+
 File Format|Filename extensions|Inestigated
 ------------ | ------------- | -------------
 Adobe Photoshop|PSD|**No**
@@ -17,6 +18,7 @@ JPEG|JPG,JPEG|**No**
 PNG|PNG|**No**
 
 **Audio file formats**
+
 File Format|Filename extensions|Inestigated
 ------------ | ------------- | -------------
 Wave|WAV|**No**
