@@ -42,17 +42,19 @@ package {
             var domItem:DOMBitmapItem = xflProject.getDOMBitmapItem(bitmapExtractor.itemName);
             var bitmapData:BitmapData = new BitmapData(domItem.width, domItem.height);
             bitmapData.setPixels(bitmapData.rect, bitmapExtractor.extractedBytes);
-            addChild(new Bitmap(bitmapData));
+            var bitmap:Bitmap = new Bitmap(bitmapData);
+            //bitmap.scaleX = bitmap.scaleY = 8;
+            addChild(bitmap);
         }
 
 
         //-------------
         private function extractSomething():void {
-            var name:String = 'test_017.jpg';
+            var name:String = 'animated/animated_0';
             var domItem:DOMBitmapItem = xflProject.getDOMBitmapItem(name);
             var datFile:File = xflProject.getDOMBitmapDatFile(name);
 
-            bitmapExtractor.extract(xflProject.getDOMBitmapDatFile(name), domItem.name);
+            bitmapExtractor.extract(datFile, domItem.name);
         }
     }
 }
