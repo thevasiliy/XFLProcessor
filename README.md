@@ -11,8 +11,8 @@ File Format|Filename extension|Investigated
 ------------ | ------------- | -------------
 Adobe Photoshop|PSD|**No**
 Bitmap|BMP|**No**
-GIF|GIF|**No**
-JPEG|JPG, JPEG|**No**
+GIF|GIF|**Yes**
+JPEG|JPG, JPEG|**Yes**
 PNG|PNG|**No**
 
 **Audio file formats**
