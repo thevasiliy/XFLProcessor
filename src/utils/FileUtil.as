@@ -30,5 +30,16 @@ package utils {
             file = null;
             return result;
         }
+
+        public static function saveFile(ba:ByteArray, path:String):void {
+            ba.position = 0;
+            var file:File = new File(path);
+            var fileStream:FileStream = new FileStream();
+            fileStream.open(file, FileMode.WRITE);
+            fileStream.writeBytes(ba, 0, ba.length);
+            fileStream.close();
+            fileStream = null;
+            file = null;
+        }
     }
 }

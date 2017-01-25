@@ -3,26 +3,32 @@
  */
 package xfl {
 
-    public class DOMBitmapItem {
+    public class DOMBitmapItem extends DOMItem {
 
         private static const TWIPS_PER_PIXEL:int = 20;
 
-        public var name:String;
-        public var itemID:String;
-        public var sourceExternalFilepath:String;
-        public var bitmapDataHRef:String;
-        public var width:int;
-        public var height:int;
-        public var isJPEG:Boolean;
+        private var _width:Number;
+        private var _height:Number;
+        private var _isJPEG:Boolean;
 
         public function DOMBitmapItem(xml:XML) {
-            name = xml.@name;
-            itemID = xml.@itemID;
-            sourceExternalFilepath = xml.@sourceExternalFilepath;
-            bitmapDataHRef = xml.@bitmapDataHRef;
-            width = int(xml.@frameRight) / TWIPS_PER_PIXEL;
-            height = int(xml.@frameBottom) / TWIPS_PER_PIXEL;
-            isJPEG = String(xml.@isJPEG) == 'true';
+            super(xml);
+            _dataHRef = xml.@bitmapDataHRef;
+            _width = int(xml.@frameRight) / TWIPS_PER_PIXEL;
+            _height = int(xml.@frameBottom) / TWIPS_PER_PIXEL;
+            _isJPEG = String(xml.@isJPEG) == 'true';
+        }
+
+        public function get width():Number {
+            return _width;
+        }
+
+        public function get height():Number {
+            return _height;
+        }
+
+        public function get isJPEG():Boolean {
+            return _isJPEG;
         }
     }
 }

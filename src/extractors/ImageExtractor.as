@@ -24,7 +24,7 @@ package extractors {
      * BitmapExtractor processes 1 file at once
      * I intent this to avoid queries / dictionaries / custom events and all this stuff
      */
-    public class BitmapExtractor extends EventDispatcher {
+    public class ImageExtractor extends EventDispatcher {
 
         private static const TYPE_JPEG:int = 0xffd8;
         private static const TYPE_8_BITS:int = 0x0303;
@@ -48,7 +48,7 @@ package extractors {
         private var _imageHeight:int;
         private var _transparent:Boolean;
 
-        public function BitmapExtractor() {
+        public function ImageExtractor() {
             _eventComplete = new Event(Event.COMPLETE);
         }
 

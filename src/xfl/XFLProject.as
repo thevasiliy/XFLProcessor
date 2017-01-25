@@ -11,12 +11,14 @@ package xfl {
 
         private static const DOM_DOCUMENT:String = 'DOMDocument.xml';
         private static const DOM_BITMAP_ITEM:String = 'DOMBitmapItem';
+        private static const DOM_SOUND_ITEM:String = 'DOMSoundItem';
         private static const BIN_DIRECTORY:String = 'bin';
 
         private var projectDirectory:File;
         private var binDirectory:File;
 
         private var domBitmapItems:Vector.<DOMBitmapItem>;
+        private var domSoundItems:Vector.<DOMSoundItem>;
 
         public function XFLProject(directory:File) {
             projectDirectory = directory;
@@ -29,6 +31,12 @@ package xfl {
             domBitmapItems = new <DOMBitmapItem>[];
             for(i = 0; i < list.length(); i++){
                 domBitmapItems.push(new DOMBitmapItem(list[i]));
+            }
+
+            list = domXML.media.descendants(DOM_SOUND_ITEM);
+            domSoundItems = new <DOMSoundItem>[];
+            for(i = 0; i < list.length(); i++){
+                domSoundItems.push(new DOMSoundItem(list[i]));
             }
         }
 
@@ -44,10 +52,29 @@ package xfl {
         public function getDOMBitmapDatFile(name:String):File {
             var domBitmapItem:DOMBitmapItem = getDOMBitmapItem(name);
             if(domBitmapItem){
-                return binDirectory.resolvePath(domBitmapItem.bitmapDataHRef);
+                return binDirectory.resolvePath(domBitmapItem.dataHRef);
             }
             return null;
         }
+
+        public function getDOMSoundItem(name:String):DOMSoundItem {
+            for(var i:int = 0; i < domSoundItems.length; i++){
+                if(domSoundItems[i].name == name){
+                    return domSoundItems[i];
+                }
+            }
+            return null;
+        }
+
+        public function getDOMSoundDatFile(name:String):File {
+            var domSoundItem:DOMSoundItem = getDOMSoundItem(name);
+            if(domSoundItem){
+                return binDirectory.resolvePath(domSoundItem.dataHRef);
+            }
+            return null;
+        }
+
+        // TODO - or do getDOMItem() ? No matter the what type is, only name matters?
 
         public function get name():String {
             return projectDirectory.name;
