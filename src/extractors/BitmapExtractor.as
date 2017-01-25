@@ -28,6 +28,12 @@ package extractors {
 
         private static const TYPE_JPEG:int = 0xffd8;
         private static const TYPE_COLORMAP:int = 0x0303;
+        private static const TYPE_15_BITS:int = 0x0304;
+
+        private static const ALPHA_HEX:uint = 0xff000000;
+        private static const RED_15_BITS_MASK:uint = 0x7c00;
+        private static const GREEN_15_BITS_MASK:uint = 0x03e0;
+        private static const BLUE_15_BITS_MASK:uint = 0x001f;
 
         private var _isBusy:Boolean;
         private var _datBA:ByteArray;
@@ -57,6 +63,10 @@ package extractors {
 
                 case TYPE_COLORMAP :
                     extractColormap();
+                break;
+
+                case TYPE_15_BITS :
+                    extract15Bits();
                 break;
             }
             return true;
@@ -124,8 +134,8 @@ package extractors {
                 palette.push(_datBA.readUnsignedInt());
             }
 
-            _datBA.endian = Endian.LITTLE_ENDIAN;
             _datBA.position++;
+            _datBA.endian = Endian.LITTLE_ENDIAN;
             var compressedChunkLength:int = _datBA.readUnsignedShort();
             _datBA.position += 2;
             if(compressedChunkLength == 2){
@@ -134,14 +144,7 @@ package extractors {
                 compressedChunkLength -= 2;
             }
 
-            var inflated:ByteArray = new ByteArray();
-            while(compressedChunkLength > 0){
-                _datBA.readBytes(inflated, inflated.length, compressedChunkLength);
-                compressedChunkLength = _datBA.readUnsignedShort();
-            }
-            inflated.inflate();
-            inflated.position = 0;
-
+            var decompressed:ByteArray = decompressChunks(compressedChunkLength);
             var colormapRowLength:int = Math.ceil(imageWidth / 4) * 4;
             var skipBytesNum:int = colormapRowLength - imageWidth;
             var colorIndex:int;
@@ -149,17 +152,66 @@ package extractors {
             _outBA = new ByteArray();
             for(i = 0; i < imageHeight; i++){
                 for(j = 0; j < imageWidth; j++) {
-                    colorIndex = inflated.readUnsignedByte();
+                    colorIndex = decompressed.readUnsignedByte();
                     _outBA.writeUnsignedInt(palette[colorIndex]);
                 }
-                inflated.position += skipBytesNum;
+                decompressed.position += skipBytesNum;
             }
 
             _datBA.clear();
-            inflated.clear();
-            inflated = null;
+            decompressed.clear();
+            decompressed = null;
 
             dispatchEvent(_eventComplete);
+        }
+
+        /**
+         * BMP saved with 16 bits per pixel
+         */
+        private function extract15Bits():void {
+            _datBA.endian = Endian.LITTLE_ENDIAN;
+            _datBA.position = 4;
+            var imageWidth:int = _datBA.readUnsignedShort();
+            var imageHeight:int = _datBA.readUnsignedShort();
+
+            _datBA.position = 26;
+            _datBA.endian = Endian.LITTLE_ENDIAN;
+            var compressedChunkLength:int = _datBA.readUnsignedShort();
+            _datBA.position += 2;
+            if(compressedChunkLength == 2){
+                compressedChunkLength = _datBA.readUnsignedShort();
+            }else{
+                compressedChunkLength -= 2;
+            }
+
+            var decompressed:ByteArray = decompressChunks(compressedChunkLength);
+            decompressed.endian = Endian.BIG_ENDIAN;
+
+           _outBA = new ByteArray();
+            var pixelValue:uint;
+            var pixelNum:int = decompressed.length >> 1;
+            for(var i:int = 0; i < pixelNum; i++){
+                pixelValue = decompressed.readUnsignedShort();
+                _outBA.writeUnsignedInt(ALPHA_HEX |
+                        7 + (((pixelValue & RED_15_BITS_MASK) >> 10) << 3) << 16 |
+                        7 + (((pixelValue & GREEN_15_BITS_MASK) >> 5) << 3) << 8 |
+                        7 + ((pixelValue & BLUE_15_BITS_MASK) << 3));
+            }
+            // 1x1 pixels has 2 x0 bytes so trim _outBA length
+            _outBA.length = imageWidth * imageHeight * 4;
+
+            dispatchEvent(_eventComplete);
+        }
+
+        private function decompressChunks(compressedChunkLength:int):ByteArray {
+            var decompressed:ByteArray = new ByteArray();
+            while(compressedChunkLength > 0){
+                _datBA.readBytes(decompressed, decompressed.length, compressedChunkLength);
+                compressedChunkLength = _datBA.readUnsignedShort();
+            }
+            decompressed.inflate();
+            decompressed.position = 0;
+            return decompressed;
         }
     }
 }
