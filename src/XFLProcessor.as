@@ -50,7 +50,7 @@ package {
 
         //-------------
         private function extractSomething():void {
-            var name:String = 'animated_bmp_8bit.bmp';
+            var name:String = 'PSD_CC.psd Asset/Layer 3';
             var domItem:DOMBitmapItem = xflProject.getDOMBitmapItem(name);
             var datFile:File = xflProject.getDOMBitmapDatFile(name);
 

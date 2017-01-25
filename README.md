@@ -9,11 +9,11 @@ Processor for Adobe Flash / Animate .xfl projects (xml / dat for bitmaps, sounds
 
 File Format|Filename extension|Investigated
 ------------ | ------------- | -------------
-Adobe Photoshop|PSD|**No**
+Adobe Photoshop|PSD|**Yes?**
 Bitmap (16/24/32 bits)|BMP|**Yes**
 GIF|GIF|**Yes**
 JPEG|JPG, JPEG|**Yes**
-PNG|PNG|**No**
+PNG|PNG|**Yes**
 
 **Audio file formats**
 
