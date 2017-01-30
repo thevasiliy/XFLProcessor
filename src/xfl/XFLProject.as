@@ -74,7 +74,7 @@ package xfl {
             return null;
         }
 
-        // TODO - or do getDOMItem() ? No matter the what type is, only name matters?
+        // TODO - or do getDOMItem() ? No matter what type is, only name matters?
 
         public function get name():String {
             return projectDirectory.name;

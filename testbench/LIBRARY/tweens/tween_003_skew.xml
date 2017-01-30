@@ -1,0 +1,33 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="tweens/tween_003_skew" itemID="588a209c-00000019" lastModified="1485447377" lastUniqueIdentifier="1">
+  <timeline>
+    <DOMTimeline name="tween_003_skew" currentFrame="14">
+      <layers>
+        <DOMLayer name="Layer 1" color="#4F80FF" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" duration="14" tweenType="motion" motionTweenSnap="true" keyMode="22017">
+              <elements>
+                <DOMSymbolInstance libraryItemName="common_objects/square_02">
+                  <transformationPoint>
+                    <Point x="75" y="75"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+            <DOMFrame index="14" tweenType="motion" motionTweenSnap="true" keyMode="22017">
+              <elements>
+                <DOMSymbolInstance libraryItemName="common_objects/square_02" centerPoint3DX="75" centerPoint3DY="75">
+                  <matrix>
+                    <Matrix a="0.984786987304688" b="0.173629760742188" c="-0.258804321289063" d="0.965911865234375" tx="20.5" ty="-10.5"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="75.05" y="75.05"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

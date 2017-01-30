@@ -1,0 +1,47 @@
+<DOMDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" width="800" height="600" currentTimeline="1" xflVersion="2.8" creatorInfo="Adobe Animate CC" platform="Windows" versionInfo="Saved by Animate Windows 16.0 build 119" majorVersion="16" buildNumber="119" viewAngle3D="74.2651684569298" nextSceneIdentifier="2" playOptionsPlayLoop="false" playOptionsPlayPages="false" playOptionsPlayFrameActions="false" filetypeGUID="DD0DDBBF-5BEF-45B2-9F24-A3048D2A676F">
+     <folders>
+          <DOMFolderItem name="common_objects" itemID="5889dc5f-0000002d" isExpanded="true"/>
+          <DOMFolderItem name="raw_assets" itemID="5889debe-0000004c"/>
+          <DOMFolderItem name="raw_assets/images" itemID="5889dead-00000040"/>
+          <DOMFolderItem name="raw_assets/sounds" itemID="5889deb5-00000044"/>
+          <DOMFolderItem name="raw_assets/videos" itemID="5889deb8-00000048"/>
+          <DOMFolderItem name="tweens" itemID="5889dc39-00000027" isExpanded="true"/>
+     </folders>
+     <symbols>
+          <Include href="common_objects/circle_01.xml" loadImmediate="false" itemID="588a1ecc-00000010" lastModified="1485446873"/>
+          <Include href="common_objects/square_01.xml" loadImmediate="false" itemID="5889dc69-0000002f" lastModified="1485429909"/>
+          <Include href="common_objects/square_02.xml" loadImmediate="false" itemID="588a1e8b-0000000e" lastModified="1485446817"/>
+          <Include href="tweens/tween_001_position.xml" loadImmediate="false" itemID="5889dc4a-00000029" lastModified="1485431162"/>
+          <Include href="tweens/tween_002_rotation.xml" loadImmediate="false" itemID="588a1ff1-00000012" lastModified="1485449355"/>
+          <Include href="tweens/tween_003_scaleX.xml" loadImmediate="false" itemID="588a2265-00000026" lastModified="1485449281"/>
+          <Include href="tweens/tween_003_skew.xml" loadImmediate="false" itemID="588a209c-00000019" lastModified="1485447377"/>
+     </symbols>
+     <timelines>
+          <DOMTimeline name="Scene 1">
+               <layers>
+                    <DOMLayer name="Layer 1" color="#4F80FF" current="true" isSelected="true">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <elements>
+                                        <DOMSymbolInstance libraryItemName="tweens/tween_001_position" centerPoint3DX="225" centerPoint3DY="225">
+                                             <matrix>
+                                                  <Matrix tx="200" ty="200"/>
+                                             </matrix>
+                                             <transformationPoint>
+                                                  <Point x="25" y="25"/>
+                                             </transformationPoint>
+                                        </DOMSymbolInstance>
+                                   </elements>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+               </layers>
+          </DOMTimeline>
+     </timelines>
+     <PrinterSettings/>
+     <publishHistory>
+          <PublishItem publishSize="314" publishTime="1485430679"/>
+          <PublishItem publishSize="314" publishTime="1485430492"/>
+          <PublishItem publishSize="314" publishTime="1485429974"/>
+     </publishHistory>
+</DOMDocument>
